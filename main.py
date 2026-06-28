@@ -16,6 +16,7 @@ default_configurations = [
     "tw2t",
 ]
 additional_configurations = ["s2ct", "s2qt"]
+other_configurations = ["qt2ct"]
 
 file1_name = input("Enter Source File Name: ")
 file2_name = input("Enter Target File Name: ")
@@ -23,10 +24,11 @@ conversion_type = input("Enter Conversion Type: ")
 while (
     conversion_type not in default_configurations
     and conversion_type not in additional_configurations
+    and conversion_type not in other_configurations
 ):
     conversion_type = input(
         "Re-enter Conversion Type "
-        + str(default_configurations + additional_configurations)
+        + str(default_configurations + additional_configurations + other_configurations)
         + ": "
     )
 
@@ -37,9 +39,10 @@ converter = opencc.OpenCC(
 )
 
 for line in tqdm(file1):
-    line = converter.convert(line)
+    if conversion_type in default_configurations + additional_configurations:
+        line = converter.convert(line)
 
-    if True:
+    if conversion_type in default_configurations + additional_configurations:
         line = line.replace("喫", "吃")
         line = line.replace("牀", "床")
         line = line.replace("箇", "個")
@@ -49,13 +52,26 @@ for line in tqdm(file1):
         line = line.replace("臺", "台")
         line = line.replace("週", "周")
 
-    if conversion_type == "s2ct":
+    if conversion_type in other_configurations + ["s2ct"]:
         line = line.replace("羣", "群")
         line = line.replace("峯", "峰")
+        line = line.replace("啟", "啓")
+        # line = line.replace("裡", "裏")
+        # line = line.replace("祕", "秘")
+        # line = line.replace("稜", "棱")
+        # line = line.replace("汙", "污")
+        # line = line.replace("覈", "核")
 
         # line = line.replace("佔", "占")
         # line = line.replace("週", "周")
 
+        line = line.replace("為", "爲")
+        line = line.replace("偽", "僞")
+        line = line.replace("媯", "嬀")
+        line = line.replace("溈", "潙")
+        line = line.replace("蒍", "蔿")
+        
+        line = line.replace("丟", "丢")
         line = line.replace("戶", "户")
         line = line.replace("奧", "奥")
         line = line.replace("粵", "粤")
@@ -65,19 +81,23 @@ for line in tqdm(file1):
         line = line.replace("囪", "囱")
         line = line.replace("勻", "匀")
 
-        # line = line.replace("眾", "衆")
+        line = line.replace("眾", "衆")
+        line = line.replace("潀", "潨")
+        
         line = line.replace("沒", "没")
         line = line.replace("別", "别")
-        line = line.replace("夠", "够")
-        line = line.replace("拋", "抛")
-        line = line.replace("線", "綫")
+        # line = line.replace("夠", "够")
+        # line = line.replace("拋", "抛")
+        # line = line.replace("隨", "随")
+        # line = line.replace("線", "綫")
         line = line.replace("強", "强")
         line = line.replace("絕", "絶")
+        # line = line.replace("撐", "撑")
+        # line = line.replace("潛", "潜")
+        # line = line.replace("鉤", "鈎")
+        line = line.replace("丟", "丢")
+        
         line = line.replace("剎", "刹")
-        line = line.replace("撐", "撑")
-        line = line.replace("潛", "潜")
-        line = line.replace("鉤", "鈎")
-        line = line.replace("屆", "届")
 
         line = line.replace("兌", "兑")
         line = line.replace("說", "説")
@@ -111,16 +131,16 @@ for line in tqdm(file1):
         line = line.replace("內", "内")
         line = line.replace("吶", "呐")
 
-        line = line.replace("減", "减")
-        line = line.replace("況", "况")
-        line = line.replace("沖", "冲")
-        line = line.replace("決", "决")
+        # line = line.replace("減", "减")
+        # line = line.replace("況", "况")
+        # line = line.replace("沖", "冲")
+        # line = line.replace("決", "决")
 
         line = line.replace("黃", "黄")
         line = line.replace("橫", "横")
 
-        line = line.replace("卻", "却")
-        line = line.replace("腳", "脚")
+        # line = line.replace("卻", "却")
+        # line = line.replace("腳", "脚")
 
         line = line.replace("禿", "秃")
         line = line.replace("頹", "頽")
@@ -160,11 +180,13 @@ for line in tqdm(file1):
         line = line.replace("姍", "姗")
         line = line.replace("柵", "栅")
         
-        line = line.replace("雞", "鷄")
+        # line = line.replace("雞", "鷄")
+        
+        line = line.replace("毀", "毁")
 
     if conversion_type == "s2qt":
         line = line.replace("僞", "偽")
-        # line = line.replace("啓", "啟")
+        line = line.replace("啓", "啟")
         line = line.replace("喫", "吃")
         line = line.replace("嫺", "嫻")
         line = line.replace("嬀", "媯")
@@ -172,7 +194,7 @@ for line in tqdm(file1):
         line = line.replace("幺", "么")
         line = line.replace("擡", "抬")
         line = line.replace("棱", "稜")
-        line = line.replace("檐", "簷")
+        # line = line.replace("檐", "簷")
         # line = line.replace("污", "汙")
         # line = line.replace("泄", "洩")
         line = line.replace("潙", "溈")
