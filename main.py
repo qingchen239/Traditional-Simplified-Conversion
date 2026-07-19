@@ -77,6 +77,7 @@ for line in tqdm(file1):
         line = line.replace("粵", "粤")
         line = line.replace("麼", "麽")
         line = line.replace("產", "産")
+        line = line.replace("彥", "彦")
         line = line.replace("虛", "虚")
         line = line.replace("囪", "囱")
         line = line.replace("勻", "匀")
@@ -96,6 +97,8 @@ for line in tqdm(file1):
         # line = line.replace("潛", "潜")
         # line = line.replace("鉤", "鈎")
         line = line.replace("丟", "丢")
+        line = line.replace("卧", "臥")
+        line = line.replace("毀", "毁")
         
         line = line.replace("剎", "刹")
 
@@ -135,6 +138,8 @@ for line in tqdm(file1):
         # line = line.replace("況", "况")
         # line = line.replace("沖", "冲")
         # line = line.replace("決", "决")
+        # line = line.replace("盜", "盗")
+        # line = line.replace("羨", "羡")
 
         line = line.replace("黃", "黄")
         line = line.replace("橫", "横")
@@ -153,7 +158,7 @@ for line in tqdm(file1):
         line = line.replace("淥", "渌")
 
         line = line.replace("遙", "遥")
-        line = line.replace("謠", "谣")
+        line = line.replace("謠", "謡")
 
         line = line.replace("溫", "温")
         line = line.replace("薀", "蕰")
@@ -175,14 +180,16 @@ for line in tqdm(file1):
         line = line.replace("侶", "侣")
         line = line.replace("宮", "宫")
         
+        line = line.replace("吳", "吴")
+        line = line.replace("娛", "娱")
+        line = line.replace("俁", "俣")
+        
         line = line.replace("冊", "册")
         line = line.replace("刪", "删")
         line = line.replace("姍", "姗")
         line = line.replace("柵", "栅")
         
         # line = line.replace("雞", "鷄")
-        
-        line = line.replace("毀", "毁")
 
     if conversion_type == "s2qt":
         line = line.replace("僞", "偽")
